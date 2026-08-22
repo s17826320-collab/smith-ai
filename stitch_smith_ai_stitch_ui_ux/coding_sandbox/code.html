@@ -1,0 +1,436 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Coding Sandbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bec6e0",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#0b1c30",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#2170e4",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f7f9fb",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#75859d",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary": "#0058be",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-surface": "#2d3133",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "64px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display-lg": ["Geist", "sans-serif"],
+                        "headline-md": ["Geist", "sans-serif"],
+                        "label-md": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"],
+                        "code-md": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        /* Syntax Highlighting Base (Nord-inspired dark theme for code) */
+        .code-keyword { color: #81A1C1; }
+        .code-function { color: #88C0D0; }
+        .code-string { color: #A3BE8C; }
+        .code-comment { color: #4C566A; font-style: italic; }
+        .code-operator { color: #E5E9F0; }
+        .code-number { color: #B48EAD; }
+        .code-punctuation { color: #ECEFF4; }
+        .code-bg { background-color: #2E3440; }
+        
+        /* Hide scrollbar for clean UI but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-hidden w-full h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 w-full shadow-sm">
+<div class="flex items-center gap-xs">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-bold">Two Sum</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Intermediate
+                </span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-code-md text-code-md bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="">45:00</span>
+</div>
+
+<div class="relative inline-block text-left" id="lang-dropdown-wrapper">
+  <button id="lang-select-btn" onclick="toggleLangDropdown()" class="flex items-center gap-xs border border-outline-variant px-3 py-1.5 rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+    <span id="current-lang-name">Python</span> <span class="material-symbols-outlined text-[18px]">expand_more</span>
+  </button>
+  
+  <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 rounded-lg shadow-xl bg-surface-container-lowest border border-outline-variant z-[100] py-1 text-sm font-label-md">
+    <button onclick="selectLanguage('Python', 'solution.py')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>Python</span> <span class="text-xs text-on-surface-variant">.py</span>
+    </button>
+    <button onclick="selectLanguage('JavaScript', 'solution.js')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>JavaScript</span> <span class="text-xs text-on-surface-variant">.js</span>
+    </button>
+    <button onclick="selectLanguage('TypeScript', 'solution.ts')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>TypeScript</span> <span class="text-xs text-on-surface-variant">.ts</span>
+    </button>
+    <button onclick="selectLanguage('C++', 'solution.cpp')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>C++</span> <span class="text-xs text-on-surface-variant">.cpp</span>
+    </button>
+    <button onclick="selectLanguage('Java', 'Solution.java')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>Java</span> <span class="text-xs text-on-surface-variant">.java</span>
+    </button>
+    <button onclick="selectLanguage('Go', 'solution.go')" class="w-full text-left px-4 py-2 hover:bg-surface-container-low text-on-surface flex items-center justify-between">
+      <span>Go</span> <span class="text-xs text-on-surface-variant">.go</span>
+    </button>
+  </div>
+</div>
+
+</div>
+</header>
+<!-- Main Content Area - Split between Problem and Editor -->
+<main class="flex-1 mt-16 overflow-hidden flex flex-col w-full max-w-container-max mx-auto md:flex-row relative pb-[184px]">
+<!-- Tab Navigation for Mobile (Problem / Code) -->
+<div class="md:hidden flex w-full border-b border-outline-variant bg-surface-container-lowest z-10 sticky top-0">
+<button class="flex-1 py-3 text-center font-label-md text-label-md border-b-2 border-primary text-primary transition-colors" id="tab-problem">
+                Problem Description
+            </button>
+<button class="flex-1 py-3 text-center font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors" id="tab-code">
+                Code Editor
+            </button>
+</div>
+<!-- Problem Section (Visible on desktop, toggled on mobile) -->
+<section class="w-full md:w-1/2 h-full overflow-y-auto no-scrollbar p-margin-mobile md:p-gutter border-r border-outline-variant bg-surface-container-lowest" id="section-problem">
+<div class="prose max-w-none">
+<h2 class="font-headline-md text-headline-md text-primary mb-sm">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</h2>
+<p class="font-body-md text-body-md text-on-surface mb-md">
+                    You may assume that each input would have <strong>exactly one solution</strong>, and you may not use the same element twice. You can return the answer in any order.
+                </p>
+<div class="mb-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs">Example 1:</h3>
+<div class="bg-surface-container-low p-sm rounded-lg font-code-md text-code-md text-on-surface border border-outline-variant">
+<div class=""><span class="text-on-surface-variant">Input:</span> nums = [2,7,11,15], target = 9</div>
+<div class=""><span class="text-on-surface-variant">Output:</span> [0,1]</div>
+<div class="text-on-surface-variant text-[12px] mt-2">Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</div>
+</div>
+</div>
+<div class="mb-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs">Constraints:</h3>
+<ul class="list-disc pl-sm font-code-md text-code-md text-on-surface space-y-1">
+<li class="">2 &lt;= nums.length &lt;= 10<sup>4</sup></li>
+<li class="">-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></li>
+<li class="">-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></li>
+<li class="">Only one valid answer exists.</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Code Editor Section (Visible on desktop, toggled on mobile) -->
+<section class="w-full md:w-1/2 h-full hidden md:flex flex-col bg-surface-container-lowest relative" id="section-code">
+<!-- Editor Toolbar -->
+<div class="flex justify-between items-center px-sm py-2 border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">code_blocks</span>
+<span class="font-label-md text-label-md text-on-surface-variant">solution.py</span>
+</div>
+<div class="flex items-center gap-2">
+<button id="btn-edit-toggle" onclick="focusCodeEditor()" class="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-xs font-medium transition-colors shadow-sm" title="Enable Direct Code Editing">
+  <span class="material-symbols-outlined text-[16px]">edit</span> Edit Code
+</button>
+<button onclick="resetCodeEditor()" class="p-1 rounded hover:bg-surface-variant text-on-surface-variant transition-colors" title="Reset Code">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+<button onclick="formatCodeEditor()" class="p-1 rounded hover:bg-surface-variant text-on-surface-variant transition-colors" title="Format Code">
+<span class="material-symbols-outlined text-[18px]">format_align_left</span>
+</button>
+</div>
+</div>
+<!-- The Code Editor (Interactive Editable Nord Theme) -->
+<div class="flex-1 overflow-hidden code-bg font-code-md text-code-md p-0 flex relative bg-[#2E3440]">
+<!-- Line Numbers -->
+<div id="line-numbers" class="flex flex-col text-right px-2 py-4 bg-[#292E39] text-[#4C566A] select-none border-r border-[#3B4252] min-w-[40px] font-mono text-sm leading-6">
+  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+</div>
+<!-- Editable Textarea Code Editor -->
+<div class="flex-1 relative h-full">
+  <textarea id="code-editor-input" oninput="updateLineNumbers()" spellcheck="false" class="w-full h-full bg-[#2E3440] text-[#D8DEE9] font-mono text-sm leading-6 p-4 focus:outline-none resize-none border-none border-0" style="tab-size: 4;">class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Write your solution here
+        seen = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in seen:
+                return [seen[diff], i]
+            seen[num] = i</textarea>
+</div>
+</div>
+<!-- Console / Test Cases Toggle (Docked to bottom of editor area) -->
+<div class="border-t border-[#3B4252] code-bg px-sm py-2 flex justify-between items-center cursor-pointer hover:bg-[#3B4252] transition-colors" id="console-header">
+<div class="flex items-center gap-2 text-[#ECEFF4] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">terminal</span> Console
+                </div>
+<span class="material-symbols-outlined text-[18px] text-[#ECEFF4] transition-transform duration-200" id="console-chevron">expand_less</span>
+</div>
+<!-- Collapsible Console Area -->
+<div class="code-bg border-t border-[#3B4252] p-sm hidden max-h-[200px] overflow-y-auto font-code-md text-code-md text-[#ECEFF4]" id="console-content">
+<div class="text-[#A3BE8C] mb-2">Test cases passed!</div>
+<div class="text-[#4C566A]">Input: [2,7,11,15], target = 9</div>
+<div class="text-[#4C566A]">Output: [0,1]</div>
+<div class="text-[#4C566A] mb-2">Expected: [0,1]</div>
+<div class="text-[#EBCB8B] mb-2 mt-4">Running Test Case 2...</div>
+<div class="text-[#4C566A]">Input: [3,2,4], target = 6</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Actions (Floating above bottom edge) -->
+<div class="fixed w-full bg-surface-container-lowest border-t border-outline-variant p-margin-mobile z-50 shadow-[0_-4px_12px_rgba(15,23,42,0.04)] pb-safe bottom-16">
+<div class="flex gap-sm max-w-container-max mx-auto justify-end">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors h-10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span> Run Tests
+            </button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg bg-[#3B82F6] text-white font-label-md text-label-md hover:bg-blue-600 transition-colors shadow-sm h-10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Submit
+            </button>
+</div>
+</div>
+<!-- Simple interaction script -->
+<script>
+        // Mobile Tab Toggle Logic
+        const tabProblem = document.getElementById('tab-problem');
+        const tabCode = document.getElementById('tab-code');
+        const sectionProblem = document.getElementById('section-problem');
+        const sectionCode = document.getElementById('section-code');
+
+        function switchTab(showProblem) {
+            if (window.innerWidth < 768) { // Mobile only
+                if (showProblem) {
+                    sectionProblem.classList.remove('hidden');
+                    sectionCode.classList.add('hidden');
+                    
+                    tabProblem.classList.replace('border-transparent', 'border-primary');
+                    tabProblem.classList.replace('text-on-surface-variant', 'text-primary');
+                    
+                    tabCode.classList.replace('border-primary', 'border-transparent');
+                    tabCode.classList.replace('text-primary', 'text-on-surface-variant');
+                } else {
+                    sectionProblem.classList.add('hidden');
+                    sectionCode.classList.remove('hidden');
+                    sectionCode.classList.add('flex');
+                    
+                    tabCode.classList.replace('border-transparent', 'border-primary');
+                    tabCode.classList.replace('text-on-surface-variant', 'text-primary');
+                    
+                    tabProblem.classList.replace('border-primary', 'border-transparent');
+                    tabProblem.classList.replace('text-primary', 'text-on-surface-variant');
+                }
+            }
+        }
+
+        if(tabProblem && tabCode) {
+            tabProblem.addEventListener('click', () => switchTab(true));
+            tabCode.addEventListener('click', () => switchTab(false));
+        }
+
+        // Console Toggle Logic
+        const consoleHeader = document.getElementById('console-header');
+        const consoleContent = document.getElementById('console-content');
+        const consoleChevron = document.getElementById('console-chevron');
+
+        if(consoleHeader && consoleContent) {
+            consoleHeader.addEventListener('click', () => {
+                const isHidden = consoleContent.classList.contains('hidden');
+                if (isHidden) {
+                    consoleContent.classList.remove('hidden');
+                    consoleChevron.style.transform = 'rotate(180deg)';
+                } else {
+                    consoleContent.classList.add('hidden');
+                    consoleChevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Ensure correct layout on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sectionProblem.classList.remove('hidden');
+                sectionCode.classList.remove('hidden');
+                sectionCode.classList.add('flex');
+            } else {
+                // Default back to Problem tab on mobile if resizing down
+                switchTab(true);
+            }
+        });
+    </script>
+
+
+
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+</body></html>

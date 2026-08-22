@@ -1,0 +1,301 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Keyword Deep Dive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#eceef0",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface": "#191c1e",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004395",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#45464d",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-dim": "#d8dadc",
+                        "inverse-surface": "#2d3133",
+                        "primary-container": "#131b2e",
+                        "secondary-container": "#2170e4",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary-container": "#75859d",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "on-secondary-container": "#fefcff",
+                        "surface": "#f7f9fb",
+                        "on-primary-fixed": "#131b2e",
+                        "background": "#f7f9fb",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "outline-variant": "#c6c6cd",
+                        "surface-variant": "#e0e3e5",
+                        "secondary": "#0058be",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#565e74",
+                        "tertiary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary-fixed": "#001a42",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xl": "64px",
+                        "container-max": "1440px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "xs": "8px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "label-md": ["Geist"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Geist"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "code-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body-md min-h-screen flex flex-col pt-safe">
+<!-- Nav shell suppressed as this is a transactional detail view (Deep Dive screen implies back navigation) -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16 pt-safe">
+<div class="flex items-center gap-4">
+<a href="../resume_insights/code.html" class="inline-block"><button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Keyword Detail</h1>
+</div>
+</header>
+<main class="flex-1 mt-16 px-margin-mobile py-md flex flex-col gap-lg pb-xl">
+<!-- Hero Section -->
+<section class="flex flex-col gap-sm">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container w-max mb-2">
+<span class="font-label-md text-label-md">High Priority Skill</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">System Design</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Critical architectural competency for senior engineering roles. Demonstrates ability to scale applications, manage state, and design robust data flow architectures.
+            </p>
+</section>
+<!-- Role Relevance -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex items-center gap-3 mb-4 pb-3 border-b border-surface-container-highest">
+<span class="material-symbols-outlined text-secondary">manage_search</span>
+<h3 class="font-headline-md text-headline-md text-primary">Role Relevance</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                For a <span class="font-bold text-on-surface">Senior Software Engineer</span> position, ATS algorithms specifically scan for distributed systems context.
+            </p>
+<ul class="flex flex-col gap-3">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Often requested alongside <strong>Microservices</strong> and <strong>AWS/GCP</strong>.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Recruiters look for specific scaling metrics attached to this skill.</span>
+</li>
+</ul>
+</section>
+<!-- Actionable Integration -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex items-center gap-3 mb-4 pb-3 border-b border-surface-container-highest">
+<span class="material-symbols-outlined text-secondary">draw</span>
+<h3 class="font-headline-md text-headline-md text-primary">Actionable Integration</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                How to optimally position this keyword in your resume:
+            </p>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<h4 class="font-label-md text-label-md font-bold text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                        Quantify Impact in Experience Section
+                    </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant ml-3.5">
+                        Instead of "Designed systems", use "Led <strong>System Design</strong> for a microservices architecture that reduced latency by 40%."
+                    </p>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-md text-label-md font-bold text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                        Add to Core Skills Matrix
+                    </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant ml-3.5">
+                        Ensure it sits prominently at the top under "Architecture" or "Core Competencies".
+                    </p>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-md text-label-md font-bold text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                        Highlight in Project Descriptions
+                    </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant ml-3.5">
+                        Detail the specific trade-offs made during the <strong>System Design</strong> phase of major projects.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+
+
+<nav class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-16 pb-safe z-50">
+  <button class="flex flex-col items-center justify-center flex-1 gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="text-label-md font-label-md">Dashboard</span>
+  </button>
+  <button class="flex flex-col items-center justify-center flex-1 gap-1 text-secondary transition-colors">
+    <span class="material-symbols-outlined">history</span>
+    <span class="text-label-md font-label-md font-bold">History</span>
+  </button>
+  <button class="flex flex-col items-center justify-center flex-1 gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">analytics</span>
+    <span class="text-label-md font-label-md">Analytics</span>
+  </button>
+  <button class="flex flex-col items-center justify-center flex-1 gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">exercise</span>
+    <span class="text-label-md font-label-md">Practice</span>
+  </button>
+  <button class="flex flex-col items-center justify-center flex-1 gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">settings</span>
+    <span class="text-label-md font-label-md">Settings</span>
+  </button>
+</nav>
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+</body></html>

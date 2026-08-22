@@ -1,0 +1,456 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-tint": "#565e74",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#45464d",
+                        "secondary": "#0058be",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#2170e4",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary-container": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "primary": "#000000",
+                        "tertiary-container": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#fefcff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-background": "#191c1e",
+                        "outline": "#76777d",
+                        "on-tertiary-container": "#75859d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "code-md": ["JetBrains Mono"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0058be;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0058be;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background h-full flex flex-col md:flex-row antialiased">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex h-full w-72 fixed left-0 top-0 z-[60] bg-surface-container-low dark:bg-tertiary-container shadow-md dark:shadow-none flex-col py-lg border-r border-outline-variant">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-headline-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Smith AI</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Interviewer Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../smith_ai_dashboard/code.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../interview_history/code.html">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Interview History</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../resume_insights/code.html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Talent Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../coding_sandbox_functional/code.html">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-body-md text-body-md">Practice Sandbox</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-secondary-container dark:text-secondary-fixed font-bold border-l-4 border-secondary-container bg-surface-container-highest transition-transform duration-300 ease-out" href="../account_settings/code.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-body-md text-body-md">Account Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto">
+<p class="font-body-sm text-body-sm text-on-surface-variant">v2.4.0</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-72 pb-safe md:pb-0 flex flex-col h-full overflow-y-auto">
+<!-- TopAppBar (Mobile & Desktop Header) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container flex justify-between items-center px-margin-mobile h-16 shadow-sm">
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Smith AI</span>
+</div>
+<div class="w-8 h-8 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-margin-mobile md:p-gutter pt-20 md:pt-12 max-w-4xl mx-auto w-full space-y-xl">
+<div class="space-y-sm">
+<h1 class="font-display-lg text-display-lg text-primary">Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your profile, interview configurations, and platform preferences.</p>
+</div>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+
+<!-- AI Model & Groq API Integration (From Smith AI Vercel App) -->
+<section class="md:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+  <div class="border-b border-surface-variant pb-sm mb-md flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-secondary">memory</span>
+      <h3 class="font-headline-md text-headline-md text-on-surface">AI Inference Engine & Groq API</h3>
+    </div>
+    <span class="text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-2 py-1 rounded font-mono font-medium">Groq LLaMA 3.3 Active</span>
+  </div>
+  <div class="space-y-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+      <div>
+        <label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Groq API Key (Optional for Live Inference)</label>
+        <input id="groq-api-key" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-mono text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" type="password" placeholder="gsk_..." value="gsk_demo_smith_ai_key_active">
+        <p class="text-xs text-on-surface-variant mt-1">Get free API key at <a href="https://console.groq.com" target="_blank" class="text-secondary hover:underline">console.groq.com</a></p>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Target LLM Model</label>
+        <select id="groq-model-select" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary appearance-none">
+          <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Recommended)</option>
+          <option value="llama3-70b-8192">llama3-70b-8192</option>
+          <option value="mixtral-8x7b-32768">mixtral-8x7b-32768</option>
+          <option value="gemma2-9b-it">gemma2-9b-it</option>
+        </select>
+      </div>
+    </div>
+    <div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-on-surface">
+          <input type="checkbox" id="voice-enabled-chk" checked class="rounded text-secondary focus:ring-secondary">
+          Voice Speech Synthesis
+        </label>
+        <div class="flex items-center gap-2 text-xs text-on-surface-variant">
+          <span>Speed:</span>
+          <input type="range" min="0.8" max="1.4" step="0.1" value="1.0" class="w-20 accent-secondary">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Profile Section -->
+<section class="md:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="border-b border-surface-variant pb-sm mb-md flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Profile</h3>
+<span class="material-symbols-outlined text-outline">badge</span>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Full Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" type="text" value="Jane Doe">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Email Address</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" type="email" value="jane.doe@example.com">
+</div>
+</div>
+</div>
+</section>
+<!-- Interview Preferences Section -->
+<section class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="border-b border-surface-variant pb-sm mb-md flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Interview Preferences</h3>
+<span class="material-symbols-outlined text-outline">tune</span>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Target Role</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent appearance-none">
+<option>Frontend Engineer</option>
+<option>Backend Engineer</option>
+<option>Fullstack Engineer</option>
+<option>Data Scientist</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Experience Level</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent appearance-none">
+<option>Mid-Level</option>
+<option>Junior</option>
+<option>Senior</option>
+<option>Staff/Principal</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Difficulty Setting</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent appearance-none">
+<option>Standard</option>
+<option>Challenging</option>
+<option>Expert</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Preferred Language</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent appearance-none">
+<option>JavaScript/TypeScript</option>
+<option>Python</option>
+<option>Java</option>
+<option>Go</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Voice & Speech Section -->
+<section class="md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col justify-between">
+<div>
+<div class="border-b border-surface-variant pb-sm mb-md flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Voice &amp; Speech</h3>
+<span class="material-symbols-outlined text-outline">record_voice_over</span>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Voice Interaction</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enable AI voice responses.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-xs">
+<label class="block font-label-md text-label-md text-on-surface">Speech Speed</label>
+<span class="font-body-sm text-body-sm text-secondary">1.0x</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-secondary" max="2.0" min="0.5" step="0.1" type="range" value="1.0">
+<div class="flex justify-between mt-1">
+<span class="font-body-sm text-body-sm text-outline">Slower</span>
+<span class="font-body-sm text-body-sm text-outline">Faster</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="md:col-span-12 flex justify-end gap-sm mt-md">
+<button class="px-6 py-2 border border-outline-variant rounded bg-transparent text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors h-[40px]">
+                        Discard Changes
+                    </button>
+<button class="px-6 py-2 bg-[#3B82F6] text-white rounded font-label-md text-label-md hover:opacity-90 transition-opacity h-[40px] shadow-sm">
+                        Save Preferences
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant dark:border-outline flex justify-around items-center h-16 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../smith_ai_dashboard/code.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../interview_history/code.html">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../resume_insights/code.html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-[10px]">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../coding_sandbox_functional/code.html">
+<span class="material-symbols-outlined">code</span>
+<span class="font-label-md text-[10px]">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 transition-all duration-300" href="../account_settings/code.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-[10px]">Settings</span>
+</a>
+</nav>
+
+
+
+
+
+
+
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+
+<script>
+  function saveSettingsToast() {
+    const toast = document.createElement('div');
+    toast.className = "fixed bottom-6 right-6 bg-emerald-600 text-white px-5 py-3 rounded-lg shadow-xl font-label-md flex items-center gap-2 z-[200] animate-bounce";
+    toast.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Preferences Saved Successfully!`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 3000);
+  }
+</script>
+
+</body></html>

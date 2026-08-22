@@ -1,0 +1,337 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Resume Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bec6e0",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#0b1c30",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#2170e4",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f7f9fb",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#75859d",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary": "#0058be",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-surface": "#2d3133",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "64px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-md": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-y-auto">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-tertiary-container fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-mobile md:px-gutter h-16">
+<button class="cursor-pointer active:scale-95 duration-200 text-primary dark:text-inverse-primary hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Smith AI</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:scale-95 duration-200">
+<img class="w-full h-full object-cover" data-alt="Professional corporate headshot of a person looking confident, neutral lighting, modern office background, minimalist style, enterprise aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtZe3T-sZngQX6oCt8emsBgmwKLAtpBiJGYTis_WWLa4vxW-4sfnI_hMeaFwBeHaFexYnylYfRpKtvlGO111Unvlte-snAUA4VIz1YS_WMUuwoKFJjQCCKgzdfYuyN8tIOAq5eIKWwMY7M1WVB5sRDpawoais3EmEj9sb3HepxJrqHqS1nWsgf_kPb4dBm6GXoj54X84U637ICTABxgEprhJGzaQOzzDP4dTCYVws4ugN8cdcXndj_Pg">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-[80px] pb-[80px] px-margin-mobile">
+
+<!-- Candidate Resume Upload & Analysis Dropzone (From Smith AI Vercel App) -->
+<section class="bg-surface-container-lowest border-2 border-dashed border-secondary/40 hover:border-secondary rounded-xl p-md mb-md text-center transition-colors cursor-pointer" onclick="document.getElementById('resume-file-input').click()">
+  <input type="file" id="resume-file-input" class="hidden" accept=".pdf,.doc,.docx,.txt" onchange="handleResumeUploaded(event)">
+  <div class="flex flex-col items-center justify-center gap-2">
+    <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+      <span class="material-symbols-outlined text-2xl">cloud_upload</span>
+    </div>
+    <div>
+      <h3 class="font-headline-md text-headline-md text-primary" id="resume-status-title">Upload Candidate Resume</h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">Drop PDF or DOCX file to analyze ATS match, skills alignment & gap breakdown</p>
+    </div>
+    <span class="text-xs bg-surface-container-high text-on-surface px-3 py-1 rounded-full font-mono mt-1">Accepts PDF, DOCX, TXT</span>
+  </div>
+</section>
+
+<div class="mb-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Resume Insights</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-base">Analysis for Software Engineer role</p>
+</div>
+<!-- ATS Score Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md mb-md">
+<div class="flex justify-between items-start mb-sm border-b border-surface-container-high pb-sm">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ATS Match Score</h3>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">78%</span>
+<span class="font-body-sm text-body-sm text-surface-tint mb-1">Strong</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-surface-container-highest border-t-secondary-container flex items-center justify-center relative transform -rotate-45">
+<span class="material-symbols-outlined text-secondary-container transform rotate-45 text-[20px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="text-on-surface-variant">Skills Match</span>
+<span class="text-primary font-medium">85%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="text-on-surface-variant">Experience Alignment</span>
+<span class="text-primary font-medium">70%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-surface-tint rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="text-on-surface-variant">Education &amp; Formatting</span>
+<span class="text-primary font-medium">95%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Insights Bento -->
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Key Insights</h3>
+<div class="grid grid-cols-1 gap-sm mb-md">
+<!-- Strengths -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-secondary-container" data-icon="trending_up">trending_up</span>
+<h4 class="font-label-md text-label-md text-primary">Strengths Identified</h4>
+</div>
+<ul class="space-y-xs font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-secondary-container">•</span> Strong background in React and modern frontend ecosystems.</li>
+<li class="flex gap-2"><span class="text-secondary-container">•</span> Clear progression in leadership responsibilities shown in recent roles.</li>
+</ul>
+</div>
+<!-- Areas for Improvement -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-surface-tint" data-icon="build">build</span>
+<h4 class="font-label-md text-label-md text-primary">Areas to Improve</h4>
+</div>
+<ul class="space-y-xs font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-surface-tint">•</span> Bullet points lack quantifiable metrics (e.g., "improved performance by X%").</li>
+<li class="flex gap-2"><span class="text-surface-tint">•</span> Cloud infrastructure experience is mentioned but lacks specific tooling details.</li>
+</ul>
+</div>
+</div>
+<!-- Keyword Feedback -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md mb-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Keyword Analysis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-sm">Missing keywords frequently found in Target Role descriptions:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md">Kubernetes</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md">GraphQL</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md">CI/CD Pipelines</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md">System Design</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-tertiary-container fixed bottom-0 w-full z-50 rounded-t-xl pb-safe flex justify-around items-center h-16 border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out font-label-md text-label-md w-16" href="../smith_ai_dashboard/code.html">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out font-label-md text-label-md w-16" href="../interview_history/code.html">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 transition-all duration-300 ease-in-out font-label-md text-label-md w-16" href="../resume_insights/code.html">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px]">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out font-label-md text-label-md w-16" href="../resume_insights/code.html">
+<span class="material-symbols-outlined mb-1" data-icon="code">code</span>
+<span class="text-[10px]">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out font-label-md text-label-md w-16" href="../coding_sandbox_functional/code.html">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="text-[10px]">Settings</span>
+</a>
+</nav>
+
+
+
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+</body></html>

@@ -1,0 +1,14 @@
+{
+  "name": "smith-ai-ui-ux",
+  "version": "1.0.0",
+  "description": "Smith AI - Next-Gen Technical Interviewer & Coding Sandbox",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3001",
+    "server-3001": "python -m http.server 3001",
+    "server-5000": "python -m http.server 5000",
+    "server-8080": "python -m http.server 8080",
+    "start": "python -m http.server 3001",
+    "preview": "python -m http.server 3001"
+  }
+}

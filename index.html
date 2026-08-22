@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smith AI — Glassmorphism AI Technical Interviewer</title>
+  <meta name="description" content="Next-Gen AI Technical Interviewer & Mock Assessment Platform designed with ultra-clean Glassmorphism aesthetics and full mobile responsiveness.">
+  
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
+      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-dark-bg: rgba(15, 23, 42, 0.92);
+      --primary-accent: #2563EB;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: #0F172A;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* GLASSMORPHISM UTILITIES */
+    .glass-navbar {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 16px 40px -10px rgba(31, 38, 135, 0.08);
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (min-width: 640px) {
+      .glass-card {
+        border-radius: 24px;
+      }
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.88);
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 1), 0 24px 48px -12px rgba(31, 38, 135, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .glass-card-dark {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-glass-primary {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+      color: #FFFFFF;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 8px 20px -4px rgba(15, 23, 42, 0.25);
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-glass-primary:hover {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 1) 0%, rgba(51, 65, 85, 1) 100%);
+      transform: translateY(-1px);
+    }
+
+    .btn-glass-accent {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: #FFFFFF;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.45), 0 10px 24px -4px rgba(37, 99, 235, 0.35);
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-glass-accent:hover {
+      transform: translateY(-1px);
+    }
+
+    .wave-bar-pulse {
+      animation: wavePulse 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes wavePulse {
+      0% { height: 4px; }
+      100% { height: 22px; }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.5); border-radius: 9999px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-900">
+
+  <!-- Ambient Glass Orbs -->
+  <div class="fixed top-20 left-4 w-72 h-72 sm:w-96 sm:h-96 bg-blue-400/20 rounded-full blur-[90px] pointer-events-none"></div>
+  <div class="fixed bottom-20 right-4 w-80 h-80 sm:w-[450px] sm:h-[450px] bg-indigo-400/20 rounded-full blur-[110px] pointer-events-none"></div>
+
+  <!-- ================= 1. RESPONSIVE FROSTED GLASS NAVBAR ================= -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-md border-b border-white/80 py-3 md:py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 no-underline">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center text-white font-extrabold text-base sm:text-lg shadow-md border border-white/20">
+          S
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <span class="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight">Smith AI</span>
+          <span class="text-[10px] font-mono font-bold glass-pill text-slate-800 px-2 py-0.5 rounded-full hidden xs:inline-block">
+            ✦ Glassmorphism
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-semibold text-slate-700">
+        <a href="#product" class="hover:text-slate-900 transition-colors no-underline">Product</a>
+        <a href="#how-it-works" class="hover:text-slate-900 transition-colors no-underline">How It Works</a>
+        <a href="#features" class="hover:text-slate-900 transition-colors no-underline">Features</a>
+        <a href="#modes" class="hover:text-slate-900 transition-colors no-underline">Interview Modes</a>
+        <a href="#pricing" class="hover:text-slate-900 transition-colors no-underline">Pricing</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="toggleCmdModal(true)" class="glass-pill text-slate-700 hover:text-slate-900 px-2.5 sm:px-3.5 py-2 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-colors border-none cursor-pointer">
+          <span class="hidden sm:inline">Search</span>
+          <kbd class="bg-white/80 border border-slate-300/80 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">⌘K</kbd>
+        </button>
+
+        <a href="https://smith-ai-five.vercel.app/" target="_blank" class="btn-glass-primary text-xs px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5">
+          <span>Start Interview</span>
+          <span class="text-xs sm:text-sm">→</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl glass-pill text-slate-800 border-none cursor-pointer flex items-center justify-center" aria-label="Toggle Navigation">
+          <span id="hamburger-icon" class="text-lg leading-none">☰</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay -->
+    <div id="mobile-nav-overlay" class="hidden md:hidden glass-navbar border-t border-white/80 px-6 py-4 space-y-3 font-semibold text-sm text-slate-800 mt-3">
+      <a href="#product" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-900 no-underline border-b border-slate-200/50">Product</a>
+      <a href="#how-it-works" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-900 no-underline border-b border-slate-200/50">How It Works</a>
+      <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-900 no-underline border-b border-slate-200/50">Features</a>
+      <a href="#modes" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-900 no-underline border-b border-slate-200/50">Interview Modes</a>
+      <a href="#pricing" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-900 no-underline">Pricing</a>
+    </div>
+  </header>
+
+  <main class="pt-24 sm:pt-28 md:pt-36">
+
+    <!-- ================= 2. HERO SECTION ================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-6 space-y-4 sm:space-y-6 text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full glass-pill text-xs font-semibold text-slate-800">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            <span>AI-Powered Interview Practice</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+            Your AI Interviewer. <br/>
+            <span class="text-blue-600">Your Next Opportunity.</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+            Practice realistic interviews with an AI that adapts to your answers, asks intelligent follow-up questions, and gives you actionable feedback.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+            <a href="https://smith-ai-five.vercel.app/" target="_blank" class="btn-glass-accent text-sm px-6 sm:px-7 py-3.5 rounded-xl flex items-center justify-center gap-2 w-full sm:w-auto">
+              <span>Start Mock Interview</span>
+              <span class="text-lg">→</span>
+            </a>
+
+            <a href="#how-it-works" class="glass-pill px-6 sm:px-7 py-3.5 rounded-xl text-sm font-semibold text-slate-800 hover:text-slate-900 transition-all no-underline text-center w-full sm:w-auto">
+              See How It Works
+            </a>
+          </div>
+
+          <div class="pt-2 sm:pt-4 flex items-center gap-2 text-xs font-mono text-slate-600">
+            <span class="text-blue-600 font-bold">•</span>
+            <span>Technical • HR • Behavioral • System Design</span>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Responsive AI Room Preview Card -->
+        <div class="lg:col-span-6 relative mt-4 lg:mt-0">
+          <div class="glass-card p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-5 text-left border border-white/80">
+            
+            <!-- Room Header -->
+            <div class="flex items-center justify-between border-b border-slate-200/60 pb-3 sm:pb-4">
+              <div class="flex items-center gap-2.5 sm:gap-3">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-slate-900 text-white font-extrabold flex items-center justify-center text-base sm:text-lg shadow-md shrink-0">
+                  S
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 sm:gap-2">
+                    <span class="font-bold text-xs sm:text-sm text-slate-900">Smith AI</span>
+                    <span class="text-[9px] sm:text-[10px] font-mono bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                      Listening...
+                    </span>
+                  </div>
+                  <span class="text-[11px] sm:text-xs text-slate-500 font-mono">Technical Interview • Senior Level</span>
+                </div>
+              </div>
+
+              <div class="text-[11px] sm:text-xs font-mono text-slate-700 glass-pill px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl shrink-0">
+                ⏱ <span id="hero-timer-display">14:34</span>
+              </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="bg-white/80 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 space-y-1.5 sm:space-y-2 shadow-sm">
+              <div class="flex justify-between text-[11px] sm:text-xs font-mono text-slate-500">
+                <span class="text-blue-600 font-bold">Question 3 of 5</span>
+                <span class="hidden xs:inline">Technical Deep Dive</span>
+              </div>
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-slate-900 leading-relaxed">
+                "Tell me about a challenging project you worked on. What specific architectural decisions did you make to handle high concurrency?"
+              </p>
+            </div>
+
+            <!-- Waveform & Mic Controls -->
+            <div class="bg-blue-50/70 border border-blue-200/80 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5 sm:gap-3">
+                <button id="mic-btn-toggle" onclick="toggleMicrophoneState()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all bg-blue-600 text-white shadow-md shadow-blue-500/30 border-none cursor-pointer shrink-0">
+                  <span class="text-lg sm:text-xl" id="mic-icon">🎙️</span>
+                </button>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 leading-tight" id="mic-status-text">Mic Active — Transcribing Speech</div>
+                  <div class="text-[10px] sm:text-[11px] text-slate-500">Auto-detected: English (US)</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1 h-5 sm:h-6 shrink-0">
+                <span class="w-1 bg-blue-600 rounded-full wave-bar-pulse" style="animation-delay: 0.1s;"></span>
+                <span class="w-1 bg-blue-500 rounded-full wave-bar-pulse" style="animation-delay: 0.3s;"></span>
+                <span class="w-1 bg-blue-400 rounded-full wave-bar-pulse" style="animation-delay: 0.2s;"></span>
+                <span class="w-1 bg-blue-600 rounded-full wave-bar-pulse" style="animation-delay: 0.4s;"></span>
+              </div>
+            </div>
+
+            <!-- Live Transcript -->
+            <div class="glass-card-dark text-white p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-mono text-[11px] sm:text-xs space-y-1">
+              <p class="text-slate-300"><strong class="text-blue-400">You:</strong> "In my previous role, I re-architected our data pipeline using Redis caching..."</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. TRUST & CATEGORIES ================= -->
+    <section class="border-y border-white/60 bg-white/40 backdrop-blur-md py-8 sm:py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-4 sm:space-y-6">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest font-mono">
+          Practice for the interviews that matter.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">💻</div>
+            <div class="text-xs font-semibold text-slate-800">Technical</div>
+          </div>
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">🧠</div>
+            <div class="text-xs font-semibold text-slate-800">Behavioral</div>
+          </div>
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">💼</div>
+            <div class="text-xs font-semibold text-slate-800">HR Round</div>
+          </div>
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">👨‍💻</div>
+            <div class="text-xs font-semibold text-slate-800">Coding</div>
+          </div>
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">⚙️</div>
+            <div class="text-xs font-semibold text-slate-800">System Design</div>
+          </div>
+          <div class="glass-card p-3.5 sm:p-4 text-center hover:border-slate-300 transition-all cursor-pointer group">
+            <div class="text-xl sm:text-2xl group-hover:scale-110 transition-transform mb-1">🎓</div>
+            <div class="text-xs font-semibold text-slate-800">Campus Drive</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. HOW IT WORKS ================= -->
+    <section id="how-it-works" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center space-y-8 sm:space-y-12">
+      <div class="space-y-3 sm:space-y-4 max-w-xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-mono text-slate-700 font-bold">
+          HOW IT WORKS
+        </div>
+        <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          From nervous to <span class="text-blue-600">interview-ready.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-left">
+        <div class="glass-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:border-slate-300 transition-all">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-slate-400">01</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">Choose Your Interview</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">Select job role, experience level, target company, and difficulty.</p>
+        </div>
+        <div class="glass-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:border-slate-300 transition-all">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-slate-400">02</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">Talk to Smith</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">Smith AI conducts the interview in real time, asking dynamic follow-up questions.</p>
+        </div>
+        <div class="glass-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:border-slate-300 transition-all">
+          <div class="text-2xl sm:text-3xl font-black font-mono text-slate-400">03</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">Get Your Score</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">After the interview, Smith AI generates an instant performance report.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. INTERACTIVE DEMO ================= -->
+    <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="glass-card p-5 sm:p-8 md:p-12 space-y-6 sm:space-y-8 text-left border border-white/80">
+        <div class="text-center space-y-2 sm:space-y-3 max-w-2xl mx-auto">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+            It doesn't just ask questions. <br/>
+            <span class="text-blue-600">It interviews you.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div class="lg:col-span-7 bg-white/70 backdrop-blur-md p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200/80 space-y-3 sm:space-y-4 shadow-sm">
+            <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 text-xs text-slate-800">
+              <span class="text-[10px] font-mono text-blue-600 font-bold block mb-1">Smith AI</span>
+              "Tell me about a project where you solved a difficult scalability bottleneck."
+            </div>
+
+            <div class="bg-blue-600 text-white p-3.5 sm:p-4 rounded-xl text-xs leading-relaxed ml-4 sm:ml-6 shadow-md">
+              "I noticed DB queries were taking over 2 seconds, so I added Redis caching."
+            </div>
+
+            <div class="bg-blue-50/80 border border-blue-200 p-3.5 sm:p-4 rounded-xl text-xs text-slate-900 space-y-1.5 sm:space-y-2">
+              <span class="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full inline-block">
+                AI-generated follow-up
+              </span>
+              <p class="font-semibold text-xs sm:text-sm leading-relaxed">"Interesting. How did you handle cache invalidation when data was updated, and how did you prevent cache stampedes?"</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="glass-card p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <div class="text-xs font-mono text-slate-700 font-bold">REAL-TIME PERFORMANCE MONITOR</div>
+              <div class="space-y-3 text-xs">
+                <div>
+                  <div class="flex justify-between mb-1"><span class="text-slate-600">Technical Depth</span><span class="font-mono text-blue-600 font-bold">92%</span></div>
+                  <div class="h-2 bg-slate-200/70 rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full" style="width: 92%;"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1"><span class="text-slate-600">Communication Clarity</span><span class="font-mono text-slate-900 font-bold">88%</span></div>
+                  <div class="h-2 bg-slate-200/70 rounded-full overflow-hidden"><div class="h-full bg-slate-900 rounded-full" style="width: 88%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. EVALUATION DASHBOARD ================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center space-y-8 sm:space-y-12">
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900">
+        Know exactly <span class="text-blue-600">how you performed.</span>
+      </h2>
+
+      <div class="glass-card p-5 sm:p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 text-left border border-white/80">
+        <div class="lg:col-span-4 bg-white/80 p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center gap-2 sm:gap-3 shadow-sm">
+          <span class="text-xs font-mono text-slate-500 font-bold">OVERALL SCORE</span>
+          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 font-mono">87 <span class="text-xs text-slate-400">/100</span></div>
+          <span class="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full">Strong Hire</span>
+        </div>
+
+        <div class="lg:col-span-8 space-y-3 sm:space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs">
+            <div class="bg-white/80 p-3 sm:p-3.5 rounded-xl border border-slate-200"><span class="text-slate-600">Technical Knowledge</span> <strong class="float-right text-blue-600">91%</strong></div>
+            <div class="bg-white/80 p-3 sm:p-3.5 rounded-xl border border-slate-200"><span class="text-slate-600">Communication</span> <strong class="float-right text-blue-600">84%</strong></div>
+            <div class="bg-white/80 p-3 sm:p-3.5 rounded-xl border border-slate-200"><span class="text-slate-600">Problem Solving</span> <strong class="float-right text-blue-600">89%</strong></div>
+            <div class="bg-white/80 p-3 sm:p-3.5 rounded-xl border border-slate-200"><span class="text-slate-600">Confidence</span> <strong class="float-right text-blue-600">76%</strong></div>
+          </div>
+
+          <div class="bg-white/80 p-3.5 sm:p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-800">
+            <p class="text-emerald-700 font-semibold">✓ Strong technical reasoning regarding caching trade-offs.</p>
+            <p class="text-emerald-700 font-semibold">✓ Clear explanation structure with logical step-by-step breakdown.</p>
+            <p class="text-amber-700 font-semibold">△ Give more specific metrics when discussing system throughput.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. MODES GRID ================= -->
+    <section id="modes" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center space-y-8 sm:space-y-12">
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900">
+        Tailored for every <span class="text-blue-600">interview format.</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-left">
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">💼</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Job Interview</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">Role-specific screening questions tailored directly to job descriptions.</p>
+        </div>
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">💻</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Technical Interview</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">Deep-dive CS fundamentals, data structures, algorithms, and code architecture.</p>
+        </div>
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🧠</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Behavioral Interview</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">STAR method framework practice for leadership principles.</p>
+        </div>
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🎓</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Campus Placement</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">Aptitude, core CS subjects, and entry-level interview practice.</p>
+        </div>
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">⚙️</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">System Design</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">High-scale architecture, microservices, and database trade-offs.</p>
+        </div>
+        <div class="glass-card p-5 sm:p-6 hover:border-slate-300 transition-all cursor-pointer group">
+          <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">👨‍💻</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Coding Interview</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-1.5">Live code editor sandbox with automated test case evaluation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. WHY SMITH AI ================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center space-y-8 sm:space-y-12">
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900">
+        Practice differently. <span class="text-blue-600">Perform differently.</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
+        <div class="glass-card p-6 sm:p-8 bg-white/40 space-y-3 sm:space-y-4">
+          <div class="text-xs font-mono font-bold text-slate-500">TRADITIONAL PRACTICE</div>
+          <ul class="space-y-2.5 sm:space-y-3 text-xs text-slate-600">
+            <li>✕ Fixed static question lists</li>
+            <li>✕ No intelligent follow-ups</li>
+            <li>✕ Generic feedback</li>
+            <li>✕ Expensive mock interviews</li>
+          </ul>
+        </div>
+
+        <div class="glass-card p-6 sm:p-8 space-y-3 sm:space-y-4 border-slate-900 bg-white/90 shadow-xl">
+          <div class="text-xs font-mono font-bold text-blue-600">SMITH AI GLASSMORPHISM</div>
+          <ul class="space-y-2.5 sm:space-y-3 text-xs text-slate-900 font-medium">
+            <li>✓ Adaptive role-specific dynamic questions</li>
+            <li>✓ Real-time intelligent follow-ups on your answers</li>
+            <li>✓ Instant personalized AI performance analytics</li>
+            <li>✓ 24/7 unlimited practice with voice & code sandbox</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 9. FINAL CTA ================= -->
+    <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+      <div class="glass-card-dark p-8 sm:p-12 md:p-20 space-y-6 sm:space-y-8 text-white shadow-2xl">
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white">
+          Your next interview <span class="text-blue-400">starts here.</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">Practice with Smith AI. Walk into your real interview with confidence.</p>
+        <a href="https://smith-ai-five.vercel.app/" target="_blank" class="btn-glass-accent text-sm px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl inline-block w-full sm:w-auto">
+          Start Your First Interview →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-300/60 bg-white/50 backdrop-blur-md py-8 sm:py-12 text-xs text-slate-500 text-center font-mono">
+    <p>© 2026 Smith AI. Engineered with Glassmorphism & Mobile Responsiveness.</p>
+  </footer>
+
+  <!-- ⌘K Command Modal -->
+  <div id="cmd-modal" class="hidden fixed inset-0 z-[100] flex items-center sm:items-start justify-center pt-0 sm:pt-20 p-4">
+    <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-md" onclick="toggleCmdModal(false)"></div>
+    <div class="glass-card p-4 max-w-lg w-full relative z-10 space-y-3 text-left font-mono shadow-2xl">
+      <div class="flex items-center gap-2 border-b border-slate-200 pb-3">
+        <span class="text-blue-600 font-bold">⌘</span>
+        <input type="text" placeholder="Type a command or search questions..." class="w-full bg-transparent border-none text-xs text-slate-900 focus:outline-none" autofocus />
+        <button onclick="toggleCmdModal(false)" class="text-slate-400 hover:text-slate-700 border-none bg-transparent cursor-pointer p-1">✕</button>
+      </div>
+      <div class="space-y-1 text-xs">
+        <a href="https://smith-ai-five.vercel.app/" target="_blank" class="block p-2.5 hover:bg-white/80 rounded-xl text-slate-700 no-underline">🚀 Launch Live Technical Interview</a>
+        <a href="./coding_sandbox_functional/code.html" class="block p-2.5 hover:bg-white/80 rounded-xl text-slate-700 no-underline">💻 Open Multi-Language Coding Sandbox</a>
+        <a href="./resume_insights/code.html" class="block p-2.5 hover:bg-white/80 rounded-xl text-slate-700 no-underline">🎯 Parse Resume & Calculate ATS Score</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Scripts -->
+  <script>
+    // Header Glass Scroll Behavior
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 20) {
+        header.classList.add('glass-navbar', 'shadow-md');
+        header.classList.remove('bg-white/70');
+      } else {
+        header.classList.remove('glass-navbar', 'shadow-md');
+        header.classList.add('bg-white/70');
+      }
+    });
+
+    // Mobile Hamburger Menu Toggle
+    function toggleMobileMenu() {
+      const overlay = document.getElementById('mobile-nav-overlay');
+      const icon = document.getElementById('hamburger-icon');
+      if (overlay) {
+        if (overlay.classList.contains('hidden')) {
+          overlay.classList.remove('hidden');
+          icon.textContent = '✕';
+        } else {
+          overlay.classList.add('hidden');
+          icon.textContent = '☰';
+        }
+      }
+    }
+
+    // Hero Countdown Timer Simulation
+    let secondsLeft = 874;
+    setInterval(function() {
+      if (secondsLeft > 0) secondsLeft--;
+      const m = Math.floor(secondsLeft / 60);
+      const s = secondsLeft % 60;
+      const display = document.getElementById('hero-timer-display');
+      if (display) {
+        display.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      }
+    }, 1000);
+
+    // Microphone State Toggle
+    let micActive = true;
+    function toggleMicrophoneState() {
+      micActive = !micActive;
+      const btn = document.getElementById('mic-btn-toggle');
+      const icon = document.getElementById('mic-icon');
+      const text = document.getElementById('mic-status-text');
+
+      if (micActive) {
+        btn.classList.add('bg-blue-600', 'text-white', 'shadow-blue-500/30');
+        btn.classList.remove('bg-slate-200', 'text-slate-600');
+        icon.textContent = '🎙️';
+        text.textContent = 'Mic Active — Transcribing Speech';
+      } else {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-blue-500/30');
+        btn.classList.add('bg-slate-200', 'text-slate-600');
+        icon.textContent = '🔇';
+        text.textContent = 'Microphone Muted';
+      }
+    }
+
+    // Command Modal Toggle
+    function toggleCmdModal(show) {
+      const modal = document.getElementById('cmd-modal');
+      if (modal) {
+        if (show) modal.classList.remove('hidden');
+        else modal.classList.add('hidden');
+      }
+    }
+
+    // Keyboard ⌘K listener
+    window.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const modal = document.getElementById('cmd-modal');
+        if (modal) modal.classList.toggle('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

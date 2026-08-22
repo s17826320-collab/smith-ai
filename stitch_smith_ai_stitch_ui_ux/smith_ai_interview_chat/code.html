@@ -1,0 +1,470 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Smith AI - Interview Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bec6e0",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#0b1c30",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#2170e4",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f7f9fb",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#75859d",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary": "#0058be",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-surface": "#2d3133",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "64px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-md": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ripple {
+            animation: ripple 1.5s infinite;
+        }
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(33, 112, 228, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(33, 112, 228, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(33, 112, 228, 0);
+            }
+        }
+        .mic-active {
+            background-color: theme('colors.secondary-container');
+            color: theme('colors.on-secondary-container');
+        }
+        .mic-inactive {
+            background-color: theme('colors.surface-container-highest');
+            color: theme('colors.on-surface');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation (Transactional intent -> no global shell nav, just custom header) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant px-margin-mobile h-16 w-full flex items-center justify-between shrink-0">
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Technical Round</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Question 3 of 5</span>
+</div>
+</div>
+<div class="flex items-center gap-xs bg-surface-container-low px-sm py-base rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">timer</span>
+<span class="font-code-md text-code-md text-primary font-medium" id="timer">12:54</span>
+</div>
+</header>
+<!-- Main Chat Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile flex flex-col gap-md pb-48">
+<!-- Interviewer Message -->
+<div class="flex gap-sm max-w-[90%]">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">robot_2</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant ml-xs">Smith AI</span>
+<div class="bg-surface-container-lowest p-sm rounded-xl rounded-tl-sm border border-outline-variant shadow-sm text-on-surface font-body-md text-body-md">
+                    Can you walk me through your approach to designing a scalable microservices architecture? What are the key considerations when deciding between synchronous and asynchronous communication?
+                </div>
+</div>
+</div>
+<!-- Candidate Message (Previous) -->
+<div class="flex gap-sm self-end max-w-[90%] flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="A clean, minimalist 3D rendering of a generic user profile avatar in a modern light mode aesthetic. Professional studio lighting, soft shadows, neutral background. High-resolution, corporate design system style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcXypaPv2DcsznX5EGUBEq9-E6lp2tiUmEVCSTXzQUekbJ3oG8Mrsr8q72o8vR8nQtgz-eIVrDhgVEQbQOhbEpW2p8Y4x6owlVYLzlrIXaDOqinVksspfgdCclfJgHowR6NAfitsTIwdRl0yRHlrgAC8YYJfZ4B7hrsluNpPTsf_j9SV6vqyZr5uIQdzoyy47K7KKJh0ALYfsHHSr4IyhmvRZrgdQjInsulx43_8ntKSuy0HFa9KwJ1w">
+</div>
+<div class="flex flex-col gap-xs items-end">
+<span class="font-label-md text-label-md text-on-surface-variant mr-xs">You</span>
+<div class="bg-secondary-container text-on-secondary-container p-sm rounded-xl rounded-tr-sm shadow-sm font-body-md text-body-md">
+                    When designing for scalability, I usually start by defining the bounded contexts. For communication, I prefer asynchronous event-driven architecture using message queues like Kafka or RabbitMQ for resilience, unless immediate consistency is absolutely required.
+                </div>
+</div>
+</div>
+<!-- Interviewer Message 2 -->
+<div class="flex gap-sm max-w-[90%]">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">robot_2</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant ml-xs">Smith AI</span>
+<div class="bg-surface-container-lowest p-sm rounded-xl rounded-tl-sm border border-outline-variant shadow-sm text-on-surface font-body-md text-body-md">
+                    That's a solid starting point. What specific metrics or conditions would prompt you to choose Kafka over a simpler queue like RabbitMQ?
+                </div>
+</div>
+</div>
+<!-- Live Transcription Area -->
+<div class="flex gap-sm self-end max-w-[90%] flex-row-reverse mt-sm opacity-80" id="live-transcription">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="A clean, minimalist 3D rendering of a generic user profile avatar in a modern light mode aesthetic. Professional studio lighting, soft shadows, neutral background. High-resolution, corporate design system style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiJuCcbwe4REat9IyRCUINRF34fjEMULabTInosI51xoX6BRpseGxbnw3uBgnHUGWtRktHGVtzuaWIz2V49rCfUHBnLF8dLNabP01rkIUcZh2wF-jQj_a-Yu7Uqy1L-QEsWf1y-RxJA9mTPqmhz_HNVaHIWrKHD1WIdCNLMa7RrPEabBvfwwmsr34Sb_oe1bSfGJKeMd2Xkna-aIBcWNr8x3UGxbf5u3mwBu5rN3OBOUmDPZATLmNH5Q">
+</div>
+<div class="flex flex-col gap-xs items-end w-full">
+<span class="font-label-md text-label-md text-secondary mr-xs flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    Listening...
+                </span>
+<div class="bg-surface-container-low text-on-surface p-sm rounded-xl rounded-tr-sm border border-outline-variant border-dashed w-full font-body-md text-body-md min-h-[60px]">
+<span class="text-on-surface">Well, I think Kafka is better when... </span><span class="text-on-surface-variant animate-pulse border-r-2 border-secondary pr-1">you need to retain</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Controls Area -->
+<div class="fixed w-full bg-surface-container-lowest border-t border-outline-variant p-margin-mobile pt-sm pb-[max(16px,env(safe-area-inset-bottom))] flex flex-col items-center gap-sm z-50 shadow-[0_-4px_12px_rgba(15,23,42,0.04)] bottom-[64px]">
+<div class="flex items-center justify-between w-full max-w-sm px-sm">
+<button class="p-sm rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">notes</span>
+<span class="font-body-sm text-[10px]">Notes</span>
+</button>
+<!-- Main Mic Button -->
+<button class="w-20 h-20 rounded-full mic-active ripple flex items-center justify-center transition-all duration-300 shadow-md" id="mic-btn">
+<span class="material-symbols-outlined text-[32px]" id="mic-icon" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<button class="p-sm rounded-full text-error hover:bg-error-container hover:text-on-error-container transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">call_end</span>
+<span class="font-body-sm text-[10px]">End</span>
+</button>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant" id="mic-status">Tap to pause</span>
+</div>
+<script>
+        // Simple timer logic
+        let minutes = 14;
+        let seconds = 28;
+        const timerEl = document.getElementById('timer');
+        
+        setInterval(() => {
+            if(seconds > 0) {
+                seconds--;
+            } else {
+                if(minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                }
+            }
+            timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
+
+        // Mic interaction logic
+        const micBtn = document.getElementById('mic-btn');
+        const micIcon = document.getElementById('mic-icon');
+        const micStatus = document.getElementById('mic-status');
+        const liveTrans = document.getElementById('live-transcription');
+        let isListening = true;
+
+        micBtn.addEventListener('click', () => {
+            isListening = !isListening;
+            if(isListening) {
+                micBtn.classList.remove('mic-inactive');
+                micBtn.classList.add('mic-active', 'ripple');
+                micIcon.textContent = 'mic';
+                micStatus.textContent = 'Tap to pause';
+                liveTrans.style.opacity = '0.8';
+                liveTrans.querySelector('.animate-pulse').style.display = 'block';
+            } else {
+                micBtn.classList.remove('mic-active', 'ripple');
+                micBtn.classList.add('mic-inactive');
+                micIcon.textContent = 'mic_off';
+                micStatus.textContent = 'Tap to speak';
+                liveTrans.style.opacity = '0.4';
+                liveTrans.querySelector('.animate-pulse').style.display = 'none';
+            }
+        });
+    </script>
+
+
+<nav class="fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant px-sm py-xs flex justify-between items-center z-[60] shadow-lg">
+  <a href="../smith_ai_dashboard/code.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="text-[10px] font-label-md">Dashboard</span>
+  </a>
+  <a href="../interview_history/code.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">history</span>
+    <span class="text-[10px] font-label-md">History</span>
+  </a>
+  <a href="../resume_insights/code.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">analytics</span>
+    <span class="text-[10px] font-label-md">Analytics</span>
+  </a>
+  <a href="../coding_sandbox_functional/code.html" class="flex flex-col items-center gap-1 text-primary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">exercise</span>
+    <span class="text-[10px] font-label-md">Practice</span>
+  </a>
+  <a href="../account_settings/code.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+    <span class="material-symbols-outlined">settings</span>
+    <span class="text-[10px] font-label-md">Settings</span>
+  </a>
+</nav>
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+
+<!-- Candidate Notes Drawer -->
+<div id="notes-drawer" class="fixed inset-y-0 right-0 w-80 bg-surface-container-lowest border-l border-outline-variant z-[90] hidden p-4 shadow-xl flex flex-col justify-between">
+  <div>
+    <div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
+      <h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+        <span class="material-symbols-outlined text-secondary">edit_note</span> Scratchpad
+      </h3>
+      <button onclick="toggleNotesDrawer(false)" class="p-1 rounded hover:bg-surface-container-low">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <textarea class="w-full h-64 bg-surface-container-low p-3 rounded-lg border border-outline-variant text-sm font-mono focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Jot down notes, system design architecture, or pseudo-code during your interview..."></textarea>
+  </div>
+  <div class="text-xs text-on-surface-variant">
+    Notes auto-saved to interview transcript.
+  </div>
+</div>
+
+<script>
+  function toggleNotesDrawer(open) {
+    const notes = document.getElementById('notes-drawer');
+    if (notes) {
+      if (open === undefined) notes.classList.toggle('hidden');
+      else if (open) notes.classList.remove('hidden');
+      else notes.classList.add('hidden');
+    }
+  }
+
+  // Attach notes button & close header button listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    // Header Close Button
+    const headerClose = document.querySelector('header button span.material-symbols-outlined');
+    if (headerClose && headerClose.textContent.trim() === 'close') {
+      headerClose.parentElement.onclick = () => {
+        if (confirm('Leave current interview session?')) {
+          window.location.href = '../smith_ai_dashboard/code.html';
+        }
+      };
+    }
+
+    // End Interview Button
+    const endBtns = document.querySelectorAll('button');
+    endBtns.forEach(btn => {
+      if (btn.textContent.includes('End') || btn.querySelector('[data-icon="call_end"]') || btn.querySelector('.material-symbols-outlined')?.textContent.trim() === 'call_end') {
+        btn.onclick = () => {
+          if (confirm('End interview and jump to coding sandbox evaluation?')) {
+            window.location.href = '../coding_sandbox_functional/code.html';
+          }
+        };
+      }
+      if (btn.textContent.includes('Notes') || btn.querySelector('.material-symbols-outlined')?.textContent.trim() === 'notes') {
+        btn.onclick = () => toggleNotesDrawer();
+      }
+    });
+  });
+</script>
+
+
+<script>
+  // Web Speech Synthesis (Speech Output) from Smith AI Vercel App
+  function speakMessage(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  // Mic Speech-to-Text Recognition Handler
+  document.addEventListener('DOMContentLoaded', () => {
+    const micBtn = document.getElementById('mic-btn');
+    const micIcon = document.getElementById('mic-icon');
+    const micStatus = document.getElementById('mic-status');
+    const liveTrans = document.getElementById('live-transcription');
+
+    if (micBtn) {
+      micBtn.onclick = () => {
+        if (micBtn.classList.contains('ripple')) {
+          micBtn.classList.remove('ripple', 'mic-active');
+          micBtn.classList.add('mic-inactive');
+          if (micIcon) micIcon.textContent = 'mic_off';
+          if (micStatus) micStatus.textContent = 'Muted - Tap to speak';
+          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        } else {
+          micBtn.classList.add('ripple', 'mic-active');
+          micBtn.classList.remove('mic-inactive');
+          if (micIcon) micIcon.textContent = 'mic';
+          if (micStatus) micStatus.textContent = 'Listening... Speak your answer';
+          speakMessage("I am listening. Please explain your architecture decision.");
+        }
+      };
+    }
+  });
+</script>
+
+</body></html>

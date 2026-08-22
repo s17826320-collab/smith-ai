@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smith AI — Minimal AI Technical Interviewer</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .tab-btn.active {
+      background-color: #2563EB;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-[#0A0A0F] text-slate-100 min-h-screen flex flex-col justify-between">
+
+  <!-- Minimal Header Bar -->
+  <header class="h-14 border-b border-slate-800/80 px-4 md:px-8 flex items-center justify-between bg-[#0D0D14]/90 backdrop-blur sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center font-bold text-sm text-white">S</div>
+      <span class="font-semibold text-sm text-white tracking-tight">Smith AI</span>
+      <span class="text-[11px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono hidden sm:inline-block">v2.4 Minimal</span>
+    </div>
+
+    <!-- Minimal Nav Tabs -->
+    <nav class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs">
+      <button onclick="switchView('chat')" id="tab-chat" class="tab-btn active px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-sm">psychology</span>
+        Interview
+      </button>
+      <button onclick="switchView('sandbox')" id="tab-sandbox" class="tab-btn px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-sm">code</span>
+        Sandbox
+      </button>
+      <button onclick="switchView('results')" id="tab-results" class="tab-btn px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-sm">analytics</span>
+        Results
+      </button>
+    </nav>
+
+    <!-- Quick Status -->
+    <div class="flex items-center gap-3 text-xs">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="text-slate-400 hidden md:inline">Groq AI Active</span>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+
+    <!-- 1. Minimal AI Interviewer Chat View -->
+    <div id="view-chat" class="flex flex-col gap-4">
+      <div class="flex items-center justify-between bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-xs text-slate-300">
+        <div class="flex items-center gap-2">
+          <span class="font-medium text-white">Round 1: Technical Concepts</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-slate-400">Software Engineer Role</span>
+        </div>
+        <div class="font-mono text-slate-400 flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs">timer</span> 14:30
+        </div>
+      </div>
+
+      <!-- Chat History Stream -->
+      <div class="space-y-4 min-h-[340px] max-h-[480px] overflow-y-auto p-2" id="chat-stream">
+        <!-- AI Message -->
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0 border border-blue-500/30">
+            AI
+          </div>
+          <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-2xl rounded-tl-sm text-xs md:text-sm text-slate-200 leading-relaxed max-w-[88%]">
+            Hello! I am Smith, your AI Technical Interviewer. Let's begin with a core system concept: 
+            <strong>How do you handle race conditions in a high-concurrency microservices environment?</strong>
+          </div>
+        </div>
+
+        <!-- Candidate Reply Example -->
+        <div class="flex gap-3 flex-row-reverse">
+          <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-700">
+            You
+          </div>
+          <div class="bg-blue-600 text-white p-3.5 rounded-2xl rounded-tr-sm text-xs md:text-sm leading-relaxed max-w-[88%] shadow-sm">
+            To prevent race conditions across microservices, I typically rely on distributed locks using Redis (Redlock algorithm) or optimistic concurrency control with version numbers in the database.
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Controls -->
+      <div class="bg-slate-900 p-2 rounded-xl border border-slate-800 flex items-center gap-2">
+        <button onclick="toggleMic()" id="mic-toggle-btn" class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors" title="Toggle Mic">
+          <span class="material-symbols-outlined text-base">mic</span>
+        </button>
+        <input type="text" id="chat-input" placeholder="Type your answer or speak into mic..." class="flex-1 bg-transparent border-none text-xs md:text-sm text-white focus:outline-none px-2" onkeydown="if(event.key==='Enter') sendChatMessage()">
+        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1">
+          Send <span class="material-symbols-outlined text-xs">send</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. Minimal Coding Sandbox View -->
+    <div id="view-sandbox" class="hidden flex-col gap-4">
+      <div class="flex items-center justify-between bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-xs">
+        <div>
+          <span class="font-semibold text-white">Problem: Two Sum</span>
+          <span class="text-slate-400 ml-2">(Array, Hash Table)</span>
+        </div>
+        <select id="minimal-lang-select" onchange="switchMinimalLang(this.value)" class="bg-slate-800 text-slate-200 border border-slate-700 rounded px-2 py-1 text-xs">
+          <option value="python">Python 3</option>
+          <option value="javascript">JavaScript</option>
+          <option value="cpp">C++</option>
+          <option value="java">Java</option>
+        </select>
+      </div>
+
+      <!-- Editor Area -->
+      <div class="bg-[#12131C] border border-slate-800 rounded-xl overflow-hidden flex flex-col h-[380px]">
+        <div class="bg-slate-900/80 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-mono">
+          <span id="sandbox-filename">solution.py</span>
+          <div class="flex items-center gap-2">
+            <button onclick="runMinimalTests()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-xs font-sans font-semibold transition-colors flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">play_arrow</span> Run Tests
+            </button>
+          </div>
+        </div>
+        <textarea id="minimal-editor" class="flex-1 bg-[#12131C] text-slate-200 font-mono text-xs md:text-sm p-4 focus:outline-none resize-none leading-relaxed" spellcheck="false">class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in seen:
+                return [seen[diff], i]
+            seen[num] = i</textarea>
+        
+        <!-- Output Console -->
+        <div id="minimal-console" class="bg-slate-950 border-t border-slate-800 p-3 font-mono text-xs hidden">
+          <div class="text-emerald-400">✔ All 3 Test Cases Passed! (Execution Time: 12ms)</div>
+          <div class="text-slate-400 mt-1">Input: nums = [2,7,11,15], target = 9 ➔ Output: [0, 1]</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Minimal Evaluation Results View -->
+    <div id="view-results" class="hidden flex-col gap-4">
+      <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="font-bold text-lg text-white">Evaluation Summary</h2>
+            <p class="text-xs text-slate-400">Smith AI Candidate Assessment Report</p>
+          </div>
+          <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-semibold text-xs">
+            Recommendation: Strong Hire
+          </span>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+          <div class="bg-slate-950 p-4 rounded-lg border border-slate-800/80">
+            <div class="text-slate-400 text-xs">Overall Score</div>
+            <div class="text-2xl font-bold text-white mt-1">92%</div>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-lg border border-slate-800/80">
+            <div class="text-slate-400 text-xs">Accuracy</div>
+            <div class="text-2xl font-bold text-blue-400 mt-1">88%</div>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-lg border border-slate-800/80">
+            <div class="text-slate-400 text-xs">Confidence</div>
+            <div class="text-2xl font-bold text-emerald-400 mt-1">90%</div>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-lg border border-slate-800/80">
+            <div class="text-slate-400 text-xs">Code Logic</div>
+            <div class="text-2xl font-bold text-purple-400 mt-1">96%</div>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs md:text-sm text-slate-300">
+          <h3 class="font-semibold text-white">Interviewer Key Notes:</h3>
+          <ul class="list-disc pl-4 space-y-1 text-slate-400">
+            <li>Strong architectural reasoning regarding distributed concurrency and message queues.</li>
+            <li>Optimal O(N) time complexity solution submitted for Two Sum coding problem.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="h-10 border-t border-slate-800/80 px-4 flex items-center justify-between text-xs text-slate-500 bg-[#0D0D14]">
+    <span>Smith AI Minimal View</span>
+    <span>Ultra-Clean & Streamlined Interface</span>
+  </footer>
+
+  <script>
+    function switchView(viewId) {
+      document.querySelectorAll('#view-chat, #view-sandbox, #view-results').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetView = document.getElementById('view-' + viewId);
+      const targetTab = document.getElementById('tab-' + viewId);
+      if (targetView) targetView.classList.remove('hidden');
+      if (targetTab) targetTab.classList.add('active');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chat-input');
+      const stream = document.getElementById('chat-stream');
+      if (input && input.value.trim()) {
+        const text = input.value.trim();
+        input.value = '';
+
+        // Add user msg
+        const userMsg = document.createElement('div');
+        userMsg.className = "flex gap-3 flex-row-reverse";
+        userMsg.innerHTML = `
+          <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-700">You</div>
+          <div class="bg-blue-600 text-white p-3.5 rounded-2xl rounded-tr-sm text-xs md:text-sm leading-relaxed max-w-[88%] shadow-sm">${text}</div>
+        `;
+        stream.appendChild(userMsg);
+        stream.scrollTop = stream.scrollHeight;
+
+        // Simulated AI response
+        setTimeout(() => {
+          const aiMsg = document.createElement('div');
+          aiMsg.className = "flex gap-3";
+          aiMsg.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0 border border-blue-500/30">AI</div>
+            <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-2xl rounded-tl-sm text-xs md:text-sm text-slate-200 leading-relaxed max-w-[88%]">
+              Great answer. Now let's jump into the <strong>Coding Sandbox</strong> round to test your implementation skills. Click the <em>Sandbox</em> tab above!
+            </div>
+          `;
+          stream.appendChild(aiMsg);
+          stream.scrollTop = stream.scrollHeight;
+        }, 800);
+      }
+    }
+
+    function toggleMic() {
+      const btn = document.getElementById('mic-toggle-btn');
+      alert("Microphone active! Speak into your mic to transcribe response.");
+    }
+
+    function runMinimalTests() {
+      const consoleEl = document.getElementById('minimal-console');
+      if (consoleEl) consoleEl.classList.remove('hidden');
+    }
+
+    function switchMinimalLang(lang) {
+      const filename = document.getElementById('sandbox-filename');
+      const editor = document.getElementById('minimal-editor');
+      if (lang === 'python') {
+        filename.textContent = 'solution.py';
+        editor.value = `class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        seen = {}\n        for i, num in enumerate(nums):\n            diff = target - num\n            if diff in seen:\n                return [seen[diff], i]\n            seen[num] = i`;
+      } else if (lang === 'javascript') {
+        filename.textContent = 'solution.js';
+        editor.value = `var twoSum = function(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const diff = target - nums[i];\n        if (map.has(diff)) return [map.get(diff), i];\n        map.set(nums[i], i);\n    }\n    return [];\n};`;
+      } else if (lang === 'cpp') {
+        filename.textContent = 'solution.cpp';
+        editor.value = `#include <vector>\n#include <unordered_map>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        unordered_map<int, int> seen;\n        for (int i = 0; i < nums.size(); i++) {\n            int diff = target - nums[i];\n            if (seen.count(diff)) return {seen[diff], i};\n            seen[nums[i]] = i;\n        }\n        return {};\n    }\n};`;
+      } else if (lang === 'java') {
+        filename.textContent = 'Solution.java';
+        editor.value = `import java.util.*;\n\nclass Solution {\n    public int[] twoSum(int[] nums, int target) {\n        Map<Integer, Integer> map = new HashMap<>();\n        for (int i = 0; i < nums.length; i++) {\n            int diff = target - nums[i];\n            if (map.containsKey(diff)) return new int[] { map.get(diff), i };\n            map.put(nums[i], i);\n        }\n        return new int[0];\n    }\n}`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "inverse-primary": "#bec6e0",
+                            "tertiary": "#000000",
+                            "tertiary-container": "#0b1c30",
+                            "surface-container": "#eceef0",
+                            "primary-fixed": "#dae2fd",
+                            "background": "#f7f9fb",
+                            "secondary-container": "#2170e4",
+                            "surface-container-low": "#f2f4f6",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-container-highest": "#e0e3e5",
+                            "outline-variant": "#c6c6cd",
+                            "on-secondary-container": "#fefcff",
+                            "on-error-container": "#93000a",
+                            "primary-fixed-dim": "#bec6e0",
+                            "surface": "#f7f9fb",
+                            "outline": "#76777d",
+                            "on-primary-fixed": "#131b2e",
+                            "on-tertiary-fixed": "#0b1c30",
+                            "on-primary-container": "#7c839b",
+                            "on-secondary-fixed": "#001a42",
+                            "tertiary-fixed-dim": "#b7c8e1",
+                            "on-secondary-fixed-variant": "#004395",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            "on-tertiary-container": "#75859d",
+                            "on-error": "#ffffff",
+                            "surface-container-high": "#e6e8ea",
+                            "error": "#ba1a1a",
+                            "on-primary": "#ffffff",
+                            "on-surface": "#191c1e",
+                            "secondary-fixed-dim": "#adc6ff",
+                            "error-container": "#ffdad6",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "secondary": "#0058be",
+                            "on-surface-variant": "#45464d",
+                            "secondary-fixed": "#d8e2ff",
+                            "surface-variant": "#e0e3e5",
+                            "surface-dim": "#d8dadc",
+                            "on-tertiary-fixed-variant": "#38485d",
+                            "inverse-surface": "#2d3133",
+                            "surface-tint": "#565e74",
+                            "tertiary-fixed": "#d3e4fe",
+                            "on-background": "#191c1e",
+                            "inverse-on-surface": "#eff1f3",
+                            "primary": "#000000",
+                            "surface-bright": "#f7f9fb",
+                            "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "gutter": "24px",
+                            "md": "24px",
+                            "margin-mobile": "16px",
+                            "xl": "64px",
+                            "container-max": "1440px",
+                            "base": "4px",
+                            "sm": "16px",
+                            "lg": "40px",
+                            "xs": "8px"
+                    },
+                    "fontFamily": {
+                            "headline-lg-mobile": ["Geist"],
+                            "body-lg": ["Inter"],
+                            "body-sm": ["Inter"],
+                            "body-md": ["Inter"],
+                            "display-lg": ["Geist"],
+                            "headline-md": ["Geist"],
+                            "label-md": ["Geist"],
+                            "headline-lg": ["Geist"],
+                            "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .circular-chart { display: block; margin: 0 auto; max-width: 80%; max-height: 250px; }
+        .circle-bg { fill: none; stroke: #E2E8F0; stroke-width: 3.8; }
+        .circle { fill: none; stroke-width: 2.8; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        @keyframes progress { 0% { stroke-dasharray: 0 100; } }
+        .circular-chart.primary .circle { stroke: #2170e4; }
+        .percentage { fill: #191c1e; font-family: 'Geist', sans-serif; font-weight: 600; font-size: 0.5em; text-anchor: middle; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased pb-24 md:pb-0 md:pt-16" data-mode="connect">
+<!-- Top Navigation (Web & Mobile Hybrid, adapting structural commands) -->
+<header class="bg-surface-container-lowest dark:bg-tertiary-container fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-gutter h-16 md:border-b md:border-outline-variant shadow-sm md:shadow-none">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-200 hover:bg-surface-container-low transition-colors rounded-full p-2" data-icon="menu">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Smith AI</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<img class="w-8 h-8 rounded-full bg-surface-container object-cover border border-outline-variant" data-alt="A small, circular, minimalist user avatar placeholder showing a generic silhouette in soft gray tones against a pure white background, suitable for an enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEATgqvGMGuEOmgVpV1ILcvPLiz92NUsU1BIqWAwrjT5u9NgzJcVIIwsSIBGseStElj9ha6zt0IN985N76-cgwVuEgsK-RJBYjQLIvFOeaF0lVfakchlwS6mNVZ14Eh2JbNFzPxL0sY_Lhw_k1h8ZKKOw6Nez84MWg-l-aqymEd1RokBdgsPY3_fYVWLiVtZZzW442og9Sr3cFUT8IuxAQx0C7PiuxTU2wuBv07382_R2R7uwHlF9jsQ">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin-mobile md:px-gutter max-w-container-max mx-auto flex flex-col gap-lg">
+<!-- Welcome & Primary Action -->
+<section class="flex flex-col gap-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">welcome back,alexa</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Ready to evaluate top technical talent?</p>
+<button class="mt-xs bg-secondary-container text-on-secondary-container h-[48px] rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs shadow-sm hover:opacity-90 transition-opacity w-full md:w-auto md:px-xl">
+<span class="material-symbols-outlined" data-icon="psychology" data-weight="fill">psychology</span>
+                START INTERVIEW
+            </button>
+</section>
+<!-- Performance Overview (Bento-style metrics) -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-headline-md text-headline-md text-primary pb-xs border-b border-outline-variant">Performance Overview</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-sm flex flex-col items-center justify-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant text-center">Overall Score</span>
+<svg class="circular-chart primary w-16 h-16" viewBox="0 0 36 36">
+<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="92, 100"></path>
+<text class="percentage" x="18" y="20.35">92%</text>
+</svg>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-sm flex flex-col items-center justify-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant text-center">Accuracy</span>
+<svg class="circular-chart primary w-16 h-16" viewBox="0 0 36 36">
+<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="88, 100"></path>
+<text class="percentage" x="18" y="20.35">88%</text>
+</svg>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-sm flex flex-col items-center justify-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant text-center">Confidence</span>
+<svg class="circular-chart primary w-16 h-16" viewBox="0 0 36 36">
+<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="75, 100"></path>
+<text class="percentage" x="18" y="20.35">75%</text>
+</svg>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-sm flex flex-col items-center justify-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant text-center">Logic</span>
+<svg class="circular-chart primary w-16 h-16" viewBox="0 0 36 36">
+<path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="96, 100"></path>
+<text class="percentage" x="18" y="20.35">96%</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- Recent Interviews -->
+<section class="flex flex-col gap-sm">
+<div class="flex justify-between items-end pb-xs border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-primary">Recent Interviews</h2>
+<button class="font-label-md text-label-md text-secondary hover:underline">View All</button>
+</div>
+<!-- Empty State for professional look -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-lg flex flex-col items-center justify-center text-center gap-sm h-48">
+<span class="material-symbols-outlined text-outline-variant text-4xl" data-icon="inbox">inbox</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">No interviews completed yet.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Your recent technical evaluations will appear here.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="bg-surface-container-lowest dark:bg-tertiary-container fixed bottom-0 w-full z-50 rounded-t-xl md:hidden border-t border-outline-variant flex justify-around items-center h-16 pb-safe shadow-[0_-4px_12px_rgba(15,23,42,0.04)]">
+<!-- Dashboard (Active) -->
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 cursor-pointer transition-all duration-300 ease-in-out"><span class="material-symbols-outlined font-label-md text-label-md" data-icon="dashboard" data-weight="fill">dashboard</span><span class="font-label-md text-[10px] leading-tight mt-1">Dashboard</span></a>
+<!-- History -->
+<a href="{{DATA:SCREEN:SCREEN_5}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 cursor-pointer hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out"><span class="material-symbols-outlined font-label-md text-label-md" data-icon="history">history</span><span class="font-label-md text-[10px] leading-tight mt-1">History</span></a>
+<!-- Analytics -->
+<a href="{{DATA:SCREEN:SCREEN_7}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 cursor-pointer hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out"><span class="material-symbols-outlined font-label-md text-label-md" data-icon="analytics">analytics</span><span class="font-label-md text-[10px] leading-tight mt-1">Analytics</span></a>
+<!-- Practice -->
+<a href="{{DATA:SCREEN:SCREEN_2}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 cursor-pointer hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out"><span class="material-symbols-outlined font-label-md text-label-md" data-icon="code">code</span><span class="font-label-md text-[10px] leading-tight mt-1">Practice</span></a>
+<!-- Settings -->
+<a href="{{DATA:SCREEN:SCREEN_3}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 cursor-pointer hover:text-secondary dark:hover:text-secondary-fixed-dim transition-all duration-300 ease-in-out"><span class="material-symbols-outlined font-label-md text-label-md" data-icon="settings">settings</span><span class="font-label-md text-[10px] leading-tight mt-1">Settings</span></a>
+</nav>
+
+
+
+
+</body></html>

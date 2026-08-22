@@ -1,0 +1,377 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Smith AI - Interview History</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-tint": "#565e74",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#45464d",
+                        "secondary": "#0058be",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#2170e4",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary-container": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "primary": "#000000",
+                        "tertiary-container": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#fefcff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-background": "#191c1e",
+                        "outline": "#76777d",
+                        "on-tertiary-container": "#75859d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "code-md": ["jetbrainsMono"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased h-screen flex overflow-hidden" data-mode="connect">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-72 fixed left-0 top-0 z-[60] bg-surface-container-low border-r border-outline-variant shadow-md dark:shadow-none py-lg transition-transform duration-300 ease-out">
+<div class="px-gutter mb-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Smith AI</span>
+</div>
+<div class="px-gutter mb-lg">
+<div class="flex items-center gap-sm">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a corporate interviewer in a modern, well-lit office setting. The lighting is soft and neutral, conveying trust and expertise. The aesthetic is clean, sharp, and aligned with a high-end enterprise software platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbch93Td5RPxtWVvxPHJiTuNrtfPkxYGMe3Mrbb0j8vAEBBYjADnw_chzRTQOv2kjUqO4WRq7YbsEx0h1IbseUe09pM0cYoyA9-5avvVPBAloqDDXJAcpZ4vI1KRkYk8GS0r9XzKTCVJ-tsftwf-tgb7m8hycl2iRKrC6rj0fhs6Mr53MbKU-vcix0bsoC7BVQuj4l7H5ul2ay6j3Oyd3zPuaUv3XeeD9HlbsRRymDwZvZEsBlTvmzyA">
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-primary">Interviewer Admin</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Expert Peer Level</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="../smith_ai_dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active Navigation -->
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-secondary-container font-bold border-l-4 border-secondary-container bg-surface-container-highest transition-colors" href="../interview_history/code.html">
+<span class="material-symbols-outlined fill" data-icon="history">history</span>
+<span class="font-label-md text-label-md">Interview History</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="../resume_insights/code.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Talent Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="../coding_sandbox_functional/code.html">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-md text-label-md">Practice Sandbox</span>
+</a>
+</nav>
+<div class="px-gutter mt-auto">
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="../account_settings/code.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Account Settings</span>
+</a>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center mt-sm">v2.4.0</p>
+</div>
+</aside>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16">
+<button class="text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">Smith AI</span>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a corporate interviewer in a modern, well-lit office setting. The lighting is soft and neutral, conveying trust and expertise. The aesthetic is clean, sharp, and aligned with a high-end enterprise software platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAByGnEJsIuxftFj8vF3ZY3qNRQdF7FFkBe5ysZwBQC0_1BqYKt1V4pME0MJNDgn7fodScQclYEKEFy3sgi31YS-iaFPDttxBmdo9iq5a7QFLsn2K8nlIDdvFFQsrSBR1DixWDN3A8ByThIS0MoCgJNwXsEPL9vNvdL67AVUBRGFklwgV2R0GBgWTuMoqIiymLUydziz-LDrvQCPVTlkwgUHCHexcQM3AlNXh7p2JzH3Wk3t4nC3IWw9g">
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 pt-16 md:pt-0 overflow-y-auto pb-safe md:pb-0 h-full w-full">
+<div class="max-w-[1024px] mx-auto px-margin-mobile md:px-gutter py-lg md:py-xl">
+<!-- Page Header & Search -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-xs">Interview History</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Review past technical evaluations and candidate performance.</p>
+</div>
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-10 pr-4 py-2 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:border-secondary-container focus:ring-2 focus:ring-secondary-container/20 transition-all outline-none h-10" placeholder="Search roles, candidates, or dates..." type="text">
+</div>
+</div>
+<!-- List Layout Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<!-- Table Header (Hidden on Mobile) -->
+<div class="hidden md:grid grid-cols-12 gap-sm px-md py-3 bg-surface-container-low border-b border-outline-variant font-label-md text-label-md text-on-surface-variant">
+<div class="col-span-5">Role &amp; Candidate</div>
+<div class="col-span-3">Date</div>
+<div class="col-span-2 text-right">Score</div>
+<div class="col-span-2 text-right">Status</div>
+</div>
+<!-- List Items -->
+<div class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 md:items-center gap-y-xs gap-x-sm px-sm md:px-md py-4 hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary group-hover:text-secondary-container transition-colors">Senior Software Engineer</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ID: EVA-2023-0891</span>
+</div>
+<div class="col-span-3 flex items-center gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Oct 24, 2023
+                        </div>
+<div class="col-span-2 md:text-right font-code-md text-code-md text-primary font-medium flex md:block items-center gap-2">
+<span class="md:hidden font-body-sm text-on-surface-variant">Score:</span> 92%
+                        </div>
+<div class="col-span-2 flex md:justify-end">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] leading-tight">
+                                Completed
+                            </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 md:items-center gap-y-xs gap-x-sm px-sm md:px-md py-4 hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary group-hover:text-secondary-container transition-colors">Data Scientist (NLP)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ID: EVA-2023-0884</span>
+</div>
+<div class="col-span-3 flex items-center gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Oct 22, 2023
+                        </div>
+<div class="col-span-2 md:text-right font-code-md text-code-md text-primary font-medium flex md:block items-center gap-2">
+<span class="md:hidden font-body-sm text-on-surface-variant">Score:</span> 84%
+                        </div>
+<div class="col-span-2 flex md:justify-end">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] leading-tight">
+                                Completed
+                            </span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 md:items-center gap-y-xs gap-x-sm px-sm md:px-md py-4 hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary group-hover:text-secondary-container transition-colors">Frontend Developer</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ID: EVA-2023-0870</span>
+</div>
+<div class="col-span-3 flex items-center gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Oct 18, 2023
+                        </div>
+<div class="col-span-2 md:text-right font-code-md text-code-md text-primary font-medium flex md:block items-center gap-2">
+<span class="md:hidden font-body-sm text-on-surface-variant">Score:</span> 68%
+                        </div>
+<div class="col-span-2 flex md:justify-end">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] leading-tight">
+                                Completed
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden in this view, but included in DOM for reference) -->
+<div class="hidden flex-col items-center justify-center py-xl text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-md border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">inbox</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">No interviews completed yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Your recent technical evaluations will appear here once candidates complete their sessions.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-16 pb-safe transition-all duration-300 ease-in-out">
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-secondary-container w-16" href="../smith_ai_dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 w-auto" href="../interview_history/code.html">
+<span class="material-symbols-outlined fill" data-icon="history">history</span>
+<span class="font-label-md text-[10px] mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-secondary-container w-16" href="../resume_insights/code.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-[10px] mt-1">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-secondary-container w-16" href="../coding_sandbox_functional/code.html">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-label-md text-[10px] mt-1">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-secondary-container w-16" href="../account_settings/code.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-[10px] mt-1">Settings</span>
+</a>
+</nav>
+
+
+
+
+
+<!-- Universal Navigation Drawer Modal -->
+<div id="app-nav-drawer" class="fixed inset-0 z-[100] hidden">
+  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleNavDrawer(false)"></div>
+  <div class="fixed inset-y-0 left-0 w-72 bg-surface-container-lowest dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-r border-outline-variant z-10">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+        </div>
+        <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 font-label-md">
+        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
+        </a>
+        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
+        </a>
+        <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">code</span> Practice Sandbox
+        </a>
+        <a href="../interview_history/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">history</span> Interview History
+        </a>
+        <a href="../resume_insights/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">analytics</span> Talent Analytics
+        </a>
+        <a href="../keyword_deep_dive/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">explore</span> Skill Deep Dive
+        </a>
+        <a href="../account_settings/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+          <span class="material-symbols-outlined text-secondary">settings</span> Settings
+        </a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+      <span>Smith AI Platform v2.4</span>
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-base">contrast</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNavDrawer(open) {
+    const drawer = document.getElementById('app-nav-drawer');
+    if (drawer) {
+      if (open === undefined) {
+        drawer.classList.toggle('hidden');
+      } else if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  // Attach click listener to menu buttons automatically
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-icon="menu"], .material-symbols-outlined').forEach(el => {
+      if (el.textContent.trim() === 'menu' || el.getAttribute('data-icon') === 'menu') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleNavDrawer(true);
+        });
+      }
+    });
+  });
+</script>
+
+</body></html>
