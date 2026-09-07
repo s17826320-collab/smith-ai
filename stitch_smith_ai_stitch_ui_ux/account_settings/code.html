@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="h-full" lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Smith AI - Settings</title>
+<title>Atlayra - Settings</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
@@ -126,12 +126,12 @@
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
 </div>
 <div>
-<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Smith AI</h2>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Atlayra</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Interviewer Admin</p>
 </div>
 </div>
 <nav class="flex-1 px-sm space-y-1">
-<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../smith_ai_dashboard/code.html">
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-transform duration-300 ease-out" href="../atlayra_dashboard/code.html">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-body-md text-body-md">Dashboard</span>
 </a>
@@ -164,7 +164,7 @@
 <button class="text-on-surface-variant p-2">
 <span class="material-symbols-outlined">menu</span>
 </button>
-<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Smith AI</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Atlayra</span>
 </div>
 <div class="w-8 h-8 bg-surface-container-high rounded-full flex items-center justify-center">
 <span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
@@ -179,7 +179,7 @@
 <!-- Bento Grid Layout for Settings -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 
-<!-- AI Model & Groq API Integration (From Smith AI Vercel App) -->
+<!-- AI Model & Groq API Integration (From Atlayra Vercel App) -->
 <section class="md:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
   <div class="border-b border-surface-variant pb-sm mb-md flex items-center justify-between">
     <div class="flex items-center gap-2">
@@ -192,7 +192,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
       <div>
         <label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Groq API Key (Optional for Live Inference)</label>
-        <input id="groq-api-key" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-mono text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" type="password" placeholder="gsk_..." value="gsk_demo_smith_ai_key_active">
+        <input id="groq-api-key" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-mono text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary" type="password" placeholder="gsk_..." value="gsk_demo_atlayra_key_active">
         <p class="text-xs text-on-surface-variant mt-1">Get free API key at <a href="https://console.groq.com" target="_blank" class="text-secondary hover:underline">console.groq.com</a></p>
       </div>
       <div>
@@ -333,7 +333,7 @@
 </main>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant dark:border-outline flex justify-around items-center h-16 pb-safe">
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../smith_ai_dashboard/code.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container py-1 hover:text-secondary transition-all duration-300" href="../atlayra_dashboard/code.html">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-md text-[10px]">Dashboard</span>
 </a>
@@ -369,17 +369,17 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-white font-bold">S</div>
-          <span class="font-headline-md font-bold text-primary dark:text-white">Smith AI</span>
+          <span class="font-headline-md font-bold text-primary dark:text-white">Atlayra</span>
         </div>
         <button onclick="toggleNavDrawer(false)" class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low transition-colors">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <nav class="flex flex-col gap-2 font-label-md">
-        <a href="../smith_ai_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+        <a href="../atlayra_dashboard/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
           <span class="material-symbols-outlined text-secondary">dashboard</span> Dashboard
         </a>
-        <a href="../smith_ai_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
+        <a href="../atlayra_interview_chat/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
           <span class="material-symbols-outlined text-secondary">psychology</span> AI Interview Chat
         </a>
         <a href="../coding_sandbox_functional/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container-low dark:hover:bg-slate-800 text-on-surface dark:text-white transition-colors">
@@ -400,7 +400,7 @@
       </nav>
     </div>
     <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
-      <span>Smith AI Platform v2.4</span>
+      <span>Atlayra Platform v2.4</span>
       <button onclick="toggleDarkMode()" class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors">
         <span class="material-symbols-outlined text-base">contrast</span>
       </button>

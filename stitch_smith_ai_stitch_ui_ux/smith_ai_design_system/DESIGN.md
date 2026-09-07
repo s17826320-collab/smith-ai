@@ -1,5 +1,5 @@
 ---
-name: Smith AI Design System
+name: Atlayra Design System
 colors:
   surface: '#f7f9fb'
   surface-dim: '#d8dadc'

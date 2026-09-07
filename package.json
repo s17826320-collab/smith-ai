@@ -1,7 +1,7 @@
 {
-  "name": "smith-ai-ui-ux",
+  "name": "atlayra-ui-ux",
   "version": "1.0.0",
-  "description": "Smith AI - Next-Gen Technical Interviewer & Coding Sandbox",
+  "description": "Atlayra - Next-Gen Technical Interviewer & Coding Sandbox",
   "main": "index.html",
   "scripts": {
     "dev": "python -m http.server 3001",
