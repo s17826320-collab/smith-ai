@@ -1,5 +1,5 @@
 ---
-name: Atlayra Design System
+name: Atlyra Design System
 colors:
   surface: '#f7f9fb'
   surface-dim: '#d8dadc'
